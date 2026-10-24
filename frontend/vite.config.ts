@@ -1,12 +1,17 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@vitejs/plugin-react' // not needed
 import tailwindcss from '@tailwindcss/vite'
 
-// Use base path for GitHub Pages deployment
+// Build for GitHub Pages from /docs
 export default defineConfig({
-  base: '/ethicalcheck/',
+  base: './',
   plugins: [react(), tailwindcss()],
   server: { host: '127.0.0.1' },
-  build: { outDir: 'dist', assetsDir: 'assets' },
+  build: {
+    outDir: '../docs',
+    emptyOutDir: true,
+    assetsDir: 'assets'
+  },
   test: { environment: 'jsdom' }
 })
